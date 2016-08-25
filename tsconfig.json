@@ -12,7 +12,7 @@
         "newLine": "LF"
     },
     "files": [
-        "src/main.ts"
+        "src/index.ts"
     ],
     "exclude": [
         "node_modules",
