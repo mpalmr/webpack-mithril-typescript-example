@@ -20,7 +20,8 @@ module.exports = validate((buildName => {
       config.bundle.typeScript(true));
 
     case 'build': return merge(BASE_CONFIG,
-      config.bundle.typeScript());
+      config.bundle.typeScript(),
+      config.optimizeForProduction());
 
     default: throw new Error(`Build does not exist: ${buildName}`);
   }
