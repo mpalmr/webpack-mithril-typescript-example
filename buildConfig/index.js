@@ -4,6 +4,15 @@ const Html = require('html-webpack-plugin');
 const PATHS = require('./misc').PATHS;
 const bundle = require('./bundle');
 
+function output(target = PATHS.dist) {
+  return {
+    output: {
+      path: target,
+      filename: '[name].js',
+    },
+  }
+}
+
 function devServer(host = 'localhost', port = 8080) {
   return {
     plugins: [new webpack.HotModuleReplacementPlugin({ multiStep: true })],
@@ -46,4 +55,4 @@ function uglifyJs() {
   };
 }
 
-module.exports = { PATHS, bundle, devServer, generateHtml, uglifyJs };
+module.exports = { PATHS, output, bundle, devServer, generateHtml, uglifyJs };

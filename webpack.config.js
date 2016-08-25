@@ -7,22 +7,20 @@ const BASE_CONFIG = {
   entry: {
     main: `${config.PATHS.src}/index.ts`,
   },
-  output: {
-    path: config.PATHS.dist,
-    filename: '[name].js',
-  },
 };
 
 module.exports = validate((buildName => {
   switch (buildName) {
 
     case 'start': return merge(BASE_CONFIG,
+      { devtool: 'eval-source-map' },
       config.generateHtml(),
       config.bundle.typeScript(),
       config.bundle.style(),
       config.devServer());
 
     case 'build': return merge(BASE_CONFIG,
+      config.output(),
       config.generateHtml(),
       config.bundle.typeScript(),
       config.bundle.style(true),
