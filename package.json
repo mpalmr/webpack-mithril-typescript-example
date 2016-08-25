@@ -1,0 +1,34 @@
+{
+  "name": "webpack-mithril-typescript-example",
+  "description": "An example of a project that uses Mithril and TypeScript, build with Webpack",
+  "author": "Matthew Palmer <mspalmer91@gmail.com>",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "keywords": [
+    "webpack",
+    "mithril",
+    "mithriljs",
+    "typescript",
+    "example"
+  ],
+  "config": {
+    "browserSupport": [
+      "last 2 versions",
+      "ie 10"
+    ]
+  },
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack"
+  },
+  "dependencies": {
+    "mithril": "^0.2.5"
+  },
+  "devDependencies": {
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.0",
+    "webpack-merge": "^0.14.1",
+    "webpack-validator": "^2.2.7"
+  }
+}
