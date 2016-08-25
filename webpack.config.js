@@ -17,11 +17,12 @@ module.exports = validate((buildName => {
   switch (buildName) {
 
     case 'start': return merge(BASE_CONFIG,
-      config.bundle.typeScript(true));
+      config.bundle.typeScript(true),
+      config.devServer());
 
     case 'build': return merge(BASE_CONFIG,
       config.bundle.typeScript(),
-      config.optimizeForProduction());
+      config.uglifyJs());
 
     default: throw new Error(`Build does not exist: ${buildName}`);
   }
