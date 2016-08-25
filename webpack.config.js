@@ -17,10 +17,12 @@ module.exports = validate((buildName => {
   switch (buildName) {
 
     case 'start': return merge(BASE_CONFIG,
+      config.generateHtml(),
       config.bundle.typeScript(true),
       config.devServer());
 
     case 'build': return merge(BASE_CONFIG,
+      config.generateHtml(),
       config.bundle.typeScript(),
       config.uglifyJs());
 

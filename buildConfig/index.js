@@ -1,4 +1,6 @@
+const path = require('path');
 const webpack = require('webpack');
+const Html = require('html-webpack-plugin');
 const PATHS = require('./misc').PATHS;
 const bundle = require('./bundle');
 
@@ -19,6 +21,17 @@ function devServer(host = 'localhost', port = 8080) {
   };
 }
 
+function generateHtml() {
+  return {
+    plugins: [
+      new Html({
+        title: 'Example project',
+        template: path.join(PATHS.src, 'template.html'),
+      }),
+    ],
+  };
+}
+
 function uglifyJs() {
   return {
     plugins: [
@@ -33,4 +46,4 @@ function uglifyJs() {
   };
 }
 
-module.exports = { PATHS, bundle, devServer, uglifyJs };
+module.exports = { PATHS, bundle, devServer, generateHtml, uglifyJs };
