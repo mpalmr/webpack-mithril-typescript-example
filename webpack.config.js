@@ -8,6 +8,10 @@ const BASE_CONFIG = merge({
   entry: {
     main: `${config.PATHS.src}/index.ts`,
   },
+  resolve: {
+    root: config.PATHS.src,
+    extensions: ['', '.js', '.ts'],
+  },
   plugins: [
     new webpack.DefinePlugin({
       COMPILE_CONSTANTS: {
