@@ -10,7 +10,7 @@ function output(target = PATHS.dist) {
       path: target,
       filename: '[name].js',
     },
-  }
+  };
 }
 
 function devServer(host = 'localhost', port = 8080) {
