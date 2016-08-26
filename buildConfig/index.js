@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const Html = require('html-webpack-plugin');
 const PATHS = require('./misc').PATHS;
 const bundle = require('./bundle');
+const PKG = require('../package.json');
 
 function output(target = PATHS.dist) {
   return {
@@ -12,6 +13,9 @@ function output(target = PATHS.dist) {
     },
   };
 }
+
+const dependencies = Object.keys(PKG.dependencies)
+  .filter(k => !['normalize.css'].includes(k));
 
 function extractBundle(filename, names) {
   return { plugins: [new webpack.optimize.CommonsChunkPlugin({ filename, names })] };
@@ -62,6 +66,7 @@ function uglifyJs() {
 module.exports = {
   PATHS,
   output,
+  dependencies,
   extractBundle,
   bundle,
   devServer,
