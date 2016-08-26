@@ -20,7 +20,7 @@
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server",
     "test": "NODE_ENV=test webpack",
-    "build": "rm -rf dist/ && NODE_ENV=production webpack"
+    "build": "NODE_ENV=production webpack"
   },
   "dependencies": {
     "mithril": "^0.2.5",
