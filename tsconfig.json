@@ -3,6 +3,7 @@
       "module": "commonjs",
       "target": "es6",
       "moduleResolution": "node",
+      "baseUrl": "src/",
       "rootDir": "src/",
       "outDir": "dist/",
       "noImplicitAny": true,
@@ -13,7 +14,13 @@
     },
     "files": [
       "src/index.d.ts",
-      "src/index.ts"
+      "src/index.ts",
+      "src/containers/Header/index.ts",
+      "src/containers/Header/view.ts",
+      "src/containers/Header/controller.ts",
+      "src/containers/Home/index.ts",
+      "src/containers/Home/view.ts",
+      "src/containers/Home/controller.ts"
     ],
     "exclude": [
       "node_modules",
