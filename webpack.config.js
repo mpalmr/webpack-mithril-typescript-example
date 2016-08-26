@@ -15,7 +15,7 @@ const BASE_CONFIG = merge({
       },
     }),
   ],
-});
+}, config.extractBundle('vendor.js', ['mithril']));
 
 module.exports = validate((() => {
   const devtool = { devtool: 'eval-source-map' };
@@ -30,7 +30,6 @@ module.exports = validate((() => {
 
     case 'production': return merge(BASE_CONFIG,
       config.output(),
-      config.extractBundle('vendor.js', ['mithril']),
       config.generateHtml(),
       config.bundle.typeScript(),
       config.bundle.style(true),
