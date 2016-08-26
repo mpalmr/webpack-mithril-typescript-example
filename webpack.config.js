@@ -5,6 +5,9 @@ const validate = require('webpack-validator');
 const config = require('./buildConfig');
 const PKG = require('./package.json');
 
+const dependencies = Object.keys(PKG.dependencies)
+  .filter(k => !['normalize.css'].includes(k));
+
 const BASE_CONFIG = merge({
   entry: {
     main: `${config.PATHS.src}/index.ts`,
@@ -16,7 +19,7 @@ const BASE_CONFIG = merge({
       },
     }),
   ],
-}, config.extractBundle('vendor.js', Object.keys(PKG.dependencies)));
+}, config.extractBundle('vendor.js', dependencies));
 
 module.exports = validate((() => {
   const devtool = { devtool: 'eval-source-map' };
