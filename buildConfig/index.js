@@ -1,23 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
 const Html = require('html-webpack-plugin');
-const Clean = require('clean-webpack-plugin');
-const PATHS = require('./misc').PATHS;
 const bundle = require('./bundle');
-const PKG = require('../package.json');
-
-function output(target = PATHS.dist) {
-  return {
-    output: {
-      path: target,
-      filename: '[name].[chunkhash].js',
-      chunkFilename: '[chunkhash].js',
-    },
-  };
-}
-
-const dependencies = Object.keys(PKG.dependencies)
-  .filter(k => !['normalize.css'].includes(k));
+const PATHS = require('./constants').PATHS;
+const FILES = require('./constants').FILES;
+const DEPENDENCIES = require('./constants').DEPENDENCIES;
 
 function extractBundle(filename, names) {
   return { plugins: [new webpack.optimize.CommonsChunkPlugin({ filename, names })] };
@@ -66,20 +53,13 @@ function optimizeForProd() {
   };
 }
 
-function clean(path = PATHS.dist) {
-  return {
-    plugins: [new Clean([path], { root: process.cwd() })],
-  };
-}
-
 module.exports = {
   PATHS,
-  output,
-  dependencies,
+  FILES,
+  DEPENDENCIES,
   extractBundle,
   bundle,
   devServer,
   generateHtml,
   optimizeForProd,
-  clean,
 };

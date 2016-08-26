@@ -1,6 +1,6 @@
 const ExtractText = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-const PATHS = require('./misc').PATHS;
+const PATHS = require('./constants').PATHS;
 const PKG = require('../package.json');
 
 function typeScript() {
