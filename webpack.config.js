@@ -46,4 +46,4 @@ module.exports = validate((() => {
 
     default: throw new Error(`Build does not exist for environment: ${process.env.NODE_ENV}`);
   }
-})());
+})(), { quiet: process.env.npm_lifecycle_event === 'stats' });
