@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const validate = require('webpack-validator');
 const config = require('./buildConfig');
+const PKG = require('./package.json');
 
 const BASE_CONFIG = merge({
   entry: {
@@ -15,7 +16,7 @@ const BASE_CONFIG = merge({
       },
     }),
   ],
-}, config.extractBundle('vendor.js', ['mithril']));
+}, config.extractBundle('vendor.js', Object.keys(PKG.dependencies)));
 
 module.exports = validate((() => {
   const devtool = { devtool: 'eval-source-map' };
