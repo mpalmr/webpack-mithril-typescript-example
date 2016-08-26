@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const Html = require('html-webpack-plugin');
 const PATHS = require('./misc').PATHS;
+const VENDOR_PACKAGES = require('./vendorPackages');
 const bundle = require('./bundle');
 
 function output(target = PATHS.dist) {
@@ -55,4 +56,4 @@ function uglifyJs() {
   };
 }
 
-module.exports = { PATHS, output, bundle, devServer, generateHtml, uglifyJs };
+module.exports = { PATHS, VENDOR_PACKAGES, output, bundle, devServer, generateHtml, uglifyJs };

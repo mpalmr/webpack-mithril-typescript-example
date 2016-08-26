@@ -4,16 +4,16 @@ const PATHS = require('./misc').PATHS;
 const PKG = require('../package.json');
 
 function typeScript() {
-  const BABEL_CONFIG = Object.assign({}, PKG.babel, {
+  const BABEL_CONFIG = JSON.stringify(Object.assign({}, PKG.babel, {
     sourceMap: true,
     cacheDirectory: true,
-  });
+  }));
   return {
     module: {
       loaders: [
         {
           test: /\.ts$/,
-          loader: `babel-loader?${JSON.stringify(BABEL_CONFIG)}!ts-loader`,
+          loader: `babel-loader?${BABEL_CONFIG}!ts-loader`,
           include: PATHS.src,
         },
       ],

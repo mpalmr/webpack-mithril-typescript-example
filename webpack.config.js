@@ -6,6 +6,7 @@ const config = require('./buildConfig');
 
 const BASE_CONFIG = merge({
   entry: {
+    vendor: config.VENDOR_PACKAGES,
     main: `${config.PATHS.src}/index.ts`,
   },
   plugins: [
