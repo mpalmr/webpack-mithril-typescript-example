@@ -26,7 +26,7 @@ function style(generateFile = false) {
   let file;
   let bundleConfig = { postcss: () => [autoprefixer(PKG.config.supportedBrowsers)] };
   if (generateFile) {
-    file = new ExtractText('[name].css');
+    file = new ExtractText('[name].[chunkhash].css');
     bundleConfig.plugins = [file];
   }
   bundleConfig.module = {

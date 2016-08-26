@@ -9,7 +9,8 @@ function output(target = PATHS.dist) {
   return {
     output: {
       path: target,
-      filename: '[name].js',
+      filename: '[name].[chunkhash].js',
+      chunkFilename: '[chunkhash].js',
     },
   };
 }

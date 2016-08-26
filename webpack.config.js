@@ -19,7 +19,7 @@ const BASE_CONFIG = merge({
       },
     }),
   ],
-}, config.extractBundle('vendor.js', config.dependencies));
+}, config.extractBundle('vendor.[chunkhash].js', config.dependencies));
 
 module.exports = validate((() => {
   const devtool = { devtool: 'eval-source-map' };
