@@ -37,7 +37,7 @@ module.exports = validate((() => {
       config.generateHtml(),
       config.bundle.typeScript(),
       config.bundle.style(true),
-      config.uglifyJs(),
+      config.optimizeForProd(),
       config.clean());
 
     case 'test': return merge(BASE_CONFIG,

@@ -51,7 +51,7 @@ function generateHtml() {
   };
 }
 
-function uglifyJs() {
+function optimizeForProd() {
   return {
     plugins: [
       new webpack.optimize.UglifyJsPlugin({
@@ -61,6 +61,7 @@ function uglifyJs() {
           screw_ie8: true,
         },
       }),
+      new webpack.optimize.DedupePlugin(),
     ],
   };
 }
@@ -79,6 +80,6 @@ module.exports = {
   bundle,
   devServer,
   generateHtml,
-  uglifyJs,
+  optimizeForProd,
   clean,
 };
