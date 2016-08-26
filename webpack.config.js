@@ -2,7 +2,6 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const validate = require('webpack-validator');
-const Clean = require('clean-webpack-plugin');
 const config = require('./buildConfig');
 
 const BASE_CONFIG = merge({
@@ -39,9 +38,7 @@ module.exports = validate((() => {
       config.bundle.typeScript(),
       config.bundle.style(true),
       config.uglifyJs(),
-      {
-        plugins: [new Clean(['dist'], { root: process.cwd() })],
-      });
+      config.clean());
 
     case 'test': return merge(BASE_CONFIG,
       devtool,

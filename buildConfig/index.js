@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const Html = require('html-webpack-plugin');
+const Clean = require('clean-webpack-plugin');
 const PATHS = require('./misc').PATHS;
 const bundle = require('./bundle');
 const PKG = require('../package.json');
@@ -64,6 +65,12 @@ function uglifyJs() {
   };
 }
 
+function clean(path = PATHS.dist) {
+  return {
+    plugins: [new Clean([path], { root: process.cwd() })],
+  };
+}
+
 module.exports = {
   PATHS,
   output,
@@ -73,4 +80,5 @@ module.exports = {
   devServer,
   generateHtml,
   uglifyJs,
+  clean,
 };
