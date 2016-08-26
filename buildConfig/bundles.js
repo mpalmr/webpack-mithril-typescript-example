@@ -4,7 +4,7 @@ const declarations = require('./declarations');
 const PKG = require('../package.json');
 
 function typeScript() {
-  const BABEL_CONFIG = JSON.stringify(Object.assign({}, PKG.babel, {
+  const BABEL_CONFIG = JSON.stringify(Object.assign(PKG.babel, {
     sourceMap: true,
     cacheDirectory: true,
   }));

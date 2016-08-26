@@ -2,14 +2,14 @@ const path = require('path');
 const webpack = require('webpack');
 const Html = require('html-webpack-plugin');
 const declarations = require('./declarations');
-const bundle = require('./bundle');
+const bundles = require('./bundles');
 const helpers = require('./helpers');
+const base = require('./base');
 
-function devServer(host = 'localhost', port = 8080) {
+function devServer() {
   return {
     plugins: [new webpack.HotModuleReplacementPlugin({ multiStep: true })],
     devServer: {
-      host, port,
       inline: true,
       hot: true,
       historyApiFallback: true,
@@ -48,8 +48,7 @@ function optimizeForProd() {
   };
 }
 
-module.exports = Object.assign(helpers, declarations, {
-  bundle,
+module.exports = Object.assign(base, declarations, bundles, helpers, {
   devServer,
   generateHtml,
   optimizeForProd,
