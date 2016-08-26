@@ -1,6 +1,6 @@
 const ExtractText = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-const PATHS = require('./constants').PATHS;
+const declarations = require('./declarations');
 const PKG = require('../package.json');
 
 function typeScript() {
@@ -14,7 +14,7 @@ function typeScript() {
         {
           test: /\.ts$/,
           loader: `babel-loader?${BABEL_CONFIG}!ts-loader`,
-          include: PATHS.src,
+          include: declarations.paths.src,
         },
       ],
     },
@@ -34,7 +34,7 @@ function style(generateFile = false) {
       {
         test: /\.s?css/,
         loader: file ? file.extract('style', LOADER_STRING) : `style!${LOADER_STRING}`,
-        include: PATHS.src,
+        include: declarations.paths.src,
       },
     ],
   };
