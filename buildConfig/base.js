@@ -16,7 +16,7 @@ const base = merge({
     chunkFilename: '[chunkhash].js',
   },
   resolve: {
-    root: declarations.paths.src,
+    // root: declarations.paths.src,
     extensions: ['', '.js', '.ts'],
   },
   plugins: [

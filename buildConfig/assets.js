@@ -68,4 +68,24 @@ function copyStatic() {
   };
 }
 
-module.exports = { typeScript, style, generateHtml, copyStatic };
+function loadStatic() {
+  return {
+    module: {
+      loaders: [
+        {
+          test: /\.jpg$/,
+          loader: 'file?name=[path][name].[ext]',
+          include: declarations.paths.assets,
+        },
+      ],
+    },
+  };
+}
+
+module.exports = {
+  typeScript,
+  style,
+  generateHtml,
+  copyStatic,
+  loadStatic,
+};
