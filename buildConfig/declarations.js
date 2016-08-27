@@ -4,6 +4,7 @@ const PKG = require('../package.json');
 const paths = {
   src: path.join(process.cwd(), 'src'),
   dist: path.join(process.cwd(), 'dist'),
+  assets: path.join(process.cwd(), 'assets'),
 };
 
 const files = {

@@ -1,4 +1,7 @@
+const path = require('path');
 const ExtractText = require('extract-text-webpack-plugin');
+const Html = require('html-webpack-plugin');
+const Copy = require('copy-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const declarations = require('./declarations');
 const PKG = require('../package.json');
@@ -41,4 +44,28 @@ function style(generateFile = false) {
   return bundleConfig;
 }
 
-module.exports = { typeScript, style };
+function generateHtml() {
+  return {
+    plugins: [
+      new Html({
+        title: 'Example project',
+        template: path.join(declarations.paths.assets, 'template.html'),
+      }),
+    ],
+  };
+}
+
+function copyStatic(destination = declarations.paths.dist) {
+  return {
+    plugins: [
+      new Copy([{
+        from: declarations.paths.assets,
+        to: declarations.paths.dist,
+      }], {
+        ignore: [path.join(declarations.paths.assets, 'template.html')],
+      }),
+    ],
+  };
+}
+
+module.exports = { typeScript, style, generateHtml, copyStatic };

@@ -20,6 +20,7 @@ module.exports = validate(merge(config.base, (() => {
       config.generateHtml(),
       config.typeScript(),
       config.style(true),
+      config.copyStatic(),
       config.optimizeForProd());
 
     case 'test': return merge(
