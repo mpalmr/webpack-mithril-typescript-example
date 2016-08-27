@@ -55,12 +55,12 @@ function generateHtml() {
   };
 }
 
-function copyStatic(destination = declarations.paths.dist) {
+function copyStatic() {
   return {
     plugins: [
       new Copy([{
         from: declarations.paths.assets,
-        to: declarations.paths.dist,
+        to: path.join(declarations.paths.dist, 'assets'),
       }], {
         ignore: [path.join(declarations.paths.assets, 'template.html')],
       }),

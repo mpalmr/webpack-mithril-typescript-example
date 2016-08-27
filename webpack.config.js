@@ -14,6 +14,7 @@ module.exports = validate(merge(config.base, (() => {
       config.generateHtml(),
       config.typeScript(),
       config.style(),
+      config.copyStatic(),
       config.devServer());
 
     case 'production': return merge(
