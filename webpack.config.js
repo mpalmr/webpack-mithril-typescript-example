@@ -12,22 +12,16 @@ module.exports = validate(merge(config.base, (() => {
     case 'development': return merge(
       GENERATE_SOURCE_MAPS,
       config.generateHtml(),
-      config.typeScript(),
-      config.style(),
       config.loadStatic(),
       config.devServer());
 
     case 'production': return merge(
       config.generateHtml(),
-      config.typeScript(),
-      config.style(),
       config.copyStatic(),
       config.optimizeForProd());
 
     case 'test': return merge(
-      GENERATE_SOURCE_MAPS,
-      config.typeScript(),
-      config.style());
+      GENERATE_SOURCE_MAPS);
 
     default: throw new Error(`Build does not exist for environment: ${process.env.NODE_ENV}`);
   }

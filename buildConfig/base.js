@@ -5,6 +5,7 @@ const Clean = require('clean-webpack-plugin');
 const Copy = require('copy-webpack-plugin');
 const declarations = require('./declarations');
 const helpers = require('./helpers');
+const assets = require('./assets');
 
 const base = merge({
   entry: {
@@ -27,6 +28,8 @@ const base = merge({
       },
     }),
   ],
-}, helpers.extractBundle(`vendor.${declarations.files.hashOnly}.js`, declarations.dependencies));
+}, helpers.extractBundle(`vendor.${declarations.files.hashOnly}.js`, declarations.dependencies),
+  assets.typeScript(),
+  assets.style());
 
 module.exports = { base };
