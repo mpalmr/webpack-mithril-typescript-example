@@ -5,11 +5,12 @@ const paths = {
   src: path.join(process.cwd(), 'src'),
   dist: path.join(process.cwd(), 'dist'),
   assets: path.join(process.cwd(), 'assets'),
+  reports: path.join(process.cwd(), 'reports'),
 };
 
 const files = {
   keepName: process.env.NODE_ENV === 'production' ? '[name].[chunkhash]' : '[name]',
-  hashOnly: process.env.NODE_ENV === 'production' ? '[chunkhash]' : '',
+  hashOnly: process.env.NODE_ENV === 'production' ? '.[chunkhash]' : '',
 };
 
 const dependencies = Object.keys(PKG.dependencies)

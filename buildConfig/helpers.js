@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const Clean = require('clean-webpack-plugin');
 const declarations = require('./declarations');
 
 function devServer() {
@@ -34,7 +35,19 @@ function optimizeForProd() {
 }
 
 function extractBundle(filename, names) {
-  return { plugins: [new webpack.optimize.CommonsChunkPlugin({ filename, names })] };
+  return {
+    plugins: [
+      new webpack.optimize.CommonsChunkPlugin({ filename, names }),
+    ],
+  };
 }
 
-module.exports = { devServer, optimizeForProd, extractBundle };
+function clean(root) {
+  return {
+    plugins: [
+      new Clean([path.join('**', '*')], { root }),
+    ]
+  }
+}
+
+module.exports = { devServer, optimizeForProd, extractBundle, clean };
