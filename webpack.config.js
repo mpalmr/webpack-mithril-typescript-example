@@ -26,7 +26,8 @@ module.exports = validate(merge(config.base, (() => {
 
     case 'test': return merge(
       GENERATE_SOURCE_MAPS,
-      config.typeScript());
+      config.typeScript(),
+      config.style());
 
     default: throw new Error(`Build does not exist for environment: ${process.env.NODE_ENV}`);
   }
