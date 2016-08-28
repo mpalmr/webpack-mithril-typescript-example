@@ -24,24 +24,21 @@ function typeScript() {
   };
 }
 
-function style(generateFile = false) {
-  const LOADER_STRING = 'css?sourceMap!resolve-url!postcss!sass?sourceMap';
-  let file;
-  let bundleConfig = { postcss: () => [autoprefixer(PKG.config.supportedBrowsers)] };
-  if (generateFile) {
-    file = new ExtractText('[name].[chunkhash].css');
-    bundleConfig.plugins = [file];
-  }
-  bundleConfig.module = {
-    loaders: [
-      {
-        test: /\.s?css/,
-        loader: file ? file.extract('style', LOADER_STRING) : `style!${LOADER_STRING}`,
-        include: declarations.paths.src,
-      },
-    ],
+function style() {
+  const cssFile = new ExtractText('[name].[chunkhash].css');
+  return {
+    plugins: [cssFile],
+    module: {
+      loaders: [
+        {
+          test: /\.s?css$/,
+          loader: cssFile.extract('style', 'css?sourceMap!resolve-url!postcss!sass?sourceMap'),
+          include: declarations.paths.src,
+        },
+      ],
+    },
+    postcss: () => [autoprefixer(PKG.config.supportedBrowsers)],
   };
-  return bundleConfig;
 }
 
 function generateHtml() {
