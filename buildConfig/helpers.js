@@ -23,7 +23,7 @@ function optimizeForProd() {
   return {
     plugins: [
       new webpack.optimize.UglifyJsPlugin({
-        compress: { drop_console: true },
+        // compress: { drop_console: true },
         mangle: {
           except: ['webpackJsonp'],
           screw_ie8: true,

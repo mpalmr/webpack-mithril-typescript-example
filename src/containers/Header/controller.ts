@@ -1,3 +1,5 @@
+import Header from "./Model";
+
 export default function controller(): any {
-    return {};
+    return { vm: new Header() };
 }
