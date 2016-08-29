@@ -3,7 +3,7 @@ const ExtractText = require('extract-text-webpack-plugin');
 const Html = require('html-webpack-plugin');
 const Copy = require('copy-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-const settings = require('./vars');
+const vars = require('./vars');
 
 /**
  * Compiles TypeScript into JavaScript which is then transpiled into ES5 via Babel
@@ -15,8 +15,8 @@ function typeScript() {
       loaders: [
         {
           test: /\.ts$/,
-          loader: `babel-loader?${settings.BABEL_CONFIG}!ts-loader`,
-          include: settings.PATHS.src,
+          loader: `babel-loader?${vars.BABEL_CONFIG}!ts-loader`,
+          include: vars.PATHS.src,
         },
       ],
     },
@@ -28,7 +28,7 @@ function typeScript() {
  * @param {ExtractText} [bundle={...}] - CSS bundle to product, by default resolves to keepName
  * @return {Object} Webpack configuration addition to be merged
  */
-function style(bundle = new ExtractText(`${settings.FILE_SCHEMES.keepName}.css`)) {
+function style(bundle = new ExtractText(`${vars.FILE_SCHEMES.keepName}.css`)) {
   return {
     plugins: [bundle],
     module: {
@@ -36,11 +36,11 @@ function style(bundle = new ExtractText(`${settings.FILE_SCHEMES.keepName}.css`)
         {
           test: /\.s?css$/,
           loader: bundle.extract('style', 'css?sourceMap!resolve-url!postcss!sass?sourceMap'),
-          include: settings.PATHS.src,
+          include: vars.PATHS.src,
         },
       ],
     },
-    postcss: () => [autoprefixer(settings.SUPPORTED_BROWSERS)],
+    postcss: () => [autoprefixer(vars.SUPPORTED_BROWSERS)],
   };
 }
 
@@ -53,7 +53,7 @@ function generateHtml() {
     plugins: [
       new Html({
         title: 'Example project',
-        template: settings.PATHS.htmlTemplate,
+        template: vars.PATHS.htmlTemplate,
       }),
     ],
   };
@@ -66,8 +66,8 @@ function generateHtml() {
 function copyStatic() {
   return {
     plugins: [
-      new Copy([{ from: settings.PATHS.assets, to: settings.PATHS.assetsProductionPath }], {
-        ignore: [settings.PATHS.htmlTemplate],
+      new Copy([{ from: vars.PATHS.assets, to: vars.PATHS.assetsProductionPath }], {
+        ignore: [vars.PATHS.htmlTemplate],
       }),
     ],
   };

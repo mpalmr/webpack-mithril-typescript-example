@@ -1,11 +1,10 @@
 const base = require('./base');
-const settings = require('./vars');
+const vars = require('./vars');
 const assets = require('./assets');
 const helpers = require('./helpers');
 
-module.exports = {
+module.exports = Object.assign(vars, {
   base,
-  settings,
   assets,
   helpers,
-};
+});

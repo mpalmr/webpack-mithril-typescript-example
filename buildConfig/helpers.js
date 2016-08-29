@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const Clean = require('clean-webpack-plugin');
-const settings = require('./vars');
+const vars = require('./vars');
 
 /**
  * Provides an instance of the HMR plugin and devServer configuration.
@@ -65,12 +65,8 @@ function extractBundle(filename, names) {
  * @param {string} root - Path of directory to clean.
  * @return {Object} Webpack configuration addition to be merged.
  */
-function clean(root = settings.PATHS.dist) {
-  return {
-    plugins: [
-      new Clean([path.join('**', '*')], { root }),
-    ]
-  }
+function clean(root = vars.PATHS.dist) {
+  return { plugins: [new Clean([path.join('**', '*')], { root })] };
 }
 
 module.exports = {
