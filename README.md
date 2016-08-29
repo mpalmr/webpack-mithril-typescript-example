@@ -1,4 +1,7 @@
+***WARNING: THIS PROJECT AND DOCS ARE INCOMPLETE***
+
 # Example: Webpack Mithril Typescript
+
 This repository is an example of project that makes use of said technologies. This setup is strongly suited towards large and scalable SPAs (single page apps), rather than simple apps and presentational websites. This example will not explain how to use each of these tools in depth but instead provide a simple example of how you can use them together to make an app with the use of them. Feel free to clone this repository and use it as a boilerplate for anything you wish to use.
 
 
@@ -22,28 +25,43 @@ A superset of JavaScript with static typing. Catches mismatched types at compile
 
 
 ### Other
-  * [Sass](http://sass-lang.com/)
-  * [PostCSS](http://postcss.org/)
-  * Unit testing: ([Karma](https://karma-runner.github.io/1.0/index.html), [Mocha](https://mochajs.org/), [Chai](http://chaijs.com/))
+* [Sass](http://sass-lang.com/)
+* [PostCSS](http://postcss.org/)
+* Unit testing: ([Karma](https://karma-runner.github.io/1.0/index.html), [Mocha](https://mochajs.org/), [Chai](http://chaijs.com/))
 
 
 
-## Installing
+## Installation
 
 ### Prerequisites
-  * [Git](https://git-scm.com/downloads)
-  * [NodeJS](https://nodejs.org/en/download/)
+Assuming you're running a recent version of NodeJS and git, please ensure the following packages are installed globally before trying to use this as boilerplate:
 
-
-#### Global npm Packages
-Please ensure the following packages are installed globally before trying to use this as boilerplate:
+* [node-gyp](https://www.npmjs.com/package/node-gyp-install)
+* [tslint](https://www.npmjs.com/package/tslint)
+* [typescript](https://www.npmjs.com/package/typescript)
 
 `npm install -g node-gyp tslint typescript`
 
 
-### Clone
-`git clone git@github.com:mpalmr/webpack-mithril-typescript-example.git`
+### Installation
+After navigating to the directory you wish to clone this repository into, run the following commands in order:
 
+1. `git clone git@github.com:mpalmr/webpack-mithril-typescript-example.git`
+2. `cd webpack-mithril-typescript-example`
+3. `npm install`
 
 
 ## Usage
+
+### npm Scripts
+All project tasks are evoked via [npm scripts](https://docs.npmjs.com/misc/scripts). `webpack` and `webpack-dev-server` should never be evoked directly from the command line.
+
+* Start development server: `npm start`
+* Production build: `npm run build`
+* Run unit tests: `npm test`
+* Generate TypeScript linting report: `npm run lint`
+* Generate Webpack stats: `npm run stats`
+
+
+
+## Build Details
