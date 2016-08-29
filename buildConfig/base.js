@@ -9,6 +9,7 @@ const merge = require('webpack-merge');
 const vars = require('./vars');
 const helpers = require('./helpers');
 const assets = require('./assets');
+const manifest = require('./manifest');
 
 module.exports = merge({
 
@@ -16,9 +17,8 @@ module.exports = merge({
    * All entry points of app. For each entry point defined, a new bundle will be generated.
    * (https://webpack.github.io/docs/configuration.html#entry)
    */
-  entry: {
-    main: path.join(vars.PATHS.src, 'index.ts'),
-  },
+  context: vars.PATHS.src,
+  entry: manifest.definedBundles,
 
   /**
    * Output of all bundles to go to ./dist
@@ -52,6 +52,10 @@ module.exports = merge({
     }),
   ],
 },
+
+  // Chunk vendor bundle JS assets
   helpers.extractBundle(`vendor${vars.FILE_SCHEMES.hashOnly}.js`, vars.DEPENDENCIES),
+
+  // Compile TypeScript and Sass/CSS into usable assets
   assets.typeScript(),
   assets.style());

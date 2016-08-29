@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Webpack's configuration is dynamically build using the webpack-merge module.
  * The base configuration all builds are merged into is exported from ./buildConfig/base.js.
@@ -6,9 +8,6 @@
  * found in this repo's package.json file. More details can be found in this project's README.md
  */
 
-'use strict';
-const path = require('path');
-const webpack = require('webpack');
 const merge = require('webpack-merge');
 const validate = require('webpack-validator');
 const config = require('./buildConfig');

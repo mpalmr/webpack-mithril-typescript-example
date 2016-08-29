@@ -1,0 +1,8 @@
+{
+  "definedBundles": {
+    "main": "index.ts"
+  },
+  "excludedDependancies": [
+    "normalize.css"
+  ]
+}

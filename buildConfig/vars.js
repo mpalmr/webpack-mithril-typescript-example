@@ -3,7 +3,8 @@
  */
 
 const path = require('path');
-const PKG = require('../package.json');
+const manifest = require('./manifest');
+const PKG = require('../package');
 
 // Project paths
 const PATHS = {
@@ -24,7 +25,7 @@ const FILE_SCHEMES = {
 // Filters all dependancies from this project's package.json file for
 // things to be included in the vendor.js bundle
 const DEPENDENCIES = Object.keys(PKG.dependencies)
-  .filter(k => !['normalize.css'].includes(k));
+  .filter(k => !manifest.excludedDependancies.includes(k));
 
 // package.json derrived constants
 const BABEL_CONFIG = JSON.stringify(Object.assign(PKG.babel, {
