@@ -3,7 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const validate = require('webpack-validator');
-const config = require('./buildConfig/webpack');
+const config = require('./buildConfig');
 
 module.exports = validate(merge(config.base, (() => {
   const GENERATE_SOURCE_MAPS = { devtool: 'eval-source-map' };
@@ -11,19 +11,19 @@ module.exports = validate(merge(config.base, (() => {
 
     case 'development': return merge(
       GENERATE_SOURCE_MAPS,
-      config.generateHtml(),
-      config.devServer());
+      config.assets.generateHtml(),
+      config.helpers.devServer());
 
     case 'production': return merge(
-      config.clean(),
-      config.generateHtml(),
-      config.copyStatic(),
-      config.optimizeForProd());
+      config.helpers.clean(),
+      config.assets.generateHtml(),
+      config.assets.copyStatic(),
+      config.helpers.optimizeForProd());
 
     case 'test': return merge(
       GENERATE_SOURCE_MAPS,
-      config.clean(),
-      config.optimizeForProd());
+      config.helpers.clean(),
+      config.helpers.optimizeForProd());
 
     default: throw new Error(`Build does not exist for environment: ${process.env.NODE_ENV}`);
   }

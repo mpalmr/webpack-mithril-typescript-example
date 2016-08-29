@@ -1,5 +1,5 @@
 const path = require('path');
-const PKG = require('../../package.json');
+const PKG = require('../package.json');
 
 // Project paths
 const PATHS = {
