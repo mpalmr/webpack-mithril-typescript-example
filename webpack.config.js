@@ -16,14 +16,14 @@ module.exports = validate(merge(config.base, (() => {
       config.devServer());
 
     case 'production': return merge(
-      config.clean(config.paths.dist),
+      config.clean(),
       config.generateHtml(),
       config.copyStatic(),
       config.optimizeForProd());
 
     case 'test': return merge(
       GENERATE_SOURCE_MAPS,
-      config.clean(config.paths.dist),
+      config.clean(),
       config.optimizeForProd());
 
     default: throw new Error(`Build does not exist for environment: ${process.env.NODE_ENV}`);

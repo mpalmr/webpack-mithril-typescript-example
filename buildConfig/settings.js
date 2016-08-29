@@ -10,11 +10,14 @@ const paths = {
 };
 paths.htmlTemplate = path.join(paths.assets, 'template.html');
 
+// Declares naming schemes to be used by webpack
 const fileSchemes = {
   keepName: process.env.NODE_ENV === 'production' ? '[name].[chunkhash]' : '[name]',
   hashOnly: process.env.NODE_ENV === 'production' ? '.[chunkhash]' : '',
 };
 
+// Filters all dependancies from this project's package.json file for
+// things to be included in the vendor.js bundle
 const dependencies = Object.keys(PKG.dependencies)
   .filter(k => !['normalize.css'].includes(k));
 

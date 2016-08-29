@@ -1,7 +1,15 @@
 const path = require('path');
 const webpack = require('webpack');
 const Clean = require('clean-webpack-plugin');
+const settings = require('./settings');
 
+/**
+ * Provides an instance of the HMR plugin and devServer configuration.
+ * NOTE: watchOptions fixes issues found on some operating systems such as Windows and Ubuntu. If
+ *  if performance becomes a problem try removing these lines *IF*
+ *  they significantly speed up builds
+ * @return {Object} Webpack configuration addition to be merged
+ */
 function devServer() {
   return {
     plugins: [new webpack.HotModuleReplacementPlugin({ multiStep: true })],
@@ -18,6 +26,11 @@ function devServer() {
   };
 }
 
+/**
+ * Run JavaScript through UglifyJS and a plugin that safely removes duplicate code. All other
+ * production optimizations should be placed here.
+ * @return {Object} Webpack configuration addition to be merged
+ */
 function optimizeForProd() {
   return {
     plugins: [
@@ -33,6 +46,12 @@ function optimizeForProd() {
   };
 }
 
+/**
+ * Extracts defined chunks into their own bundle such as 'vendor.js'.
+ * @param {string} filename - Name of bundle to produce from defined chunks,
+ * @param {Array<string>} names - Names of chunks to add into bundle,
+ * @return {Object} Webpack configuration addition to be merged,
+ */
 function extractBundle(filename, names) {
   return {
     plugins: [
@@ -41,7 +60,12 @@ function extractBundle(filename, names) {
   };
 }
 
-function clean(root) {
+/**
+ * Cleans a particular directory, by default cleans the production build..
+ * @param {string} root - Path of directory to clean.
+ * @return {Object} Webpack configuration addition to be merged.
+ */
+function clean(root = settings.paths.dist) {
   return {
     plugins: [
       new Clean([path.join('**', '*')], { root }),
