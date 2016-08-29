@@ -1,10 +1,3 @@
-'use strict';
-const path = require('path');
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const validate = require('webpack-validator');
-const config = require('./buildConfig');
-
 /**
  * Webpack's configuration is dynamically build using the webpack-merge module.
  * The base configuration all builds are merged into is exported from ./buildConfig/base.js.
@@ -12,6 +5,14 @@ const config = require('./buildConfig');
  * This specific configuration of Webpack should NOT be evoked by anything other than an npm script
  * found in this repo's package.json file. More details can be found in this project's README.md
  */
+
+'use strict';
+const path = require('path');
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const validate = require('webpack-validator');
+const config = require('./buildConfig');
+
 module.exports = validate(merge(config.base, (() => {
   const GENERATE_SOURCE_MAPS = { devtool: 'eval-source-map' };
   switch (process.env.NODE_ENV) {
