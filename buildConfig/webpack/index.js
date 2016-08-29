@@ -1,5 +1,5 @@
 const base = require('./base');
-const settings = require('./settings');
+const settings = require('./vars');
 const assets = require('./assets');
 const helpers = require('./helpers');
 
