@@ -1,5 +1,4 @@
 # Example: Webpack Mithril Typescript
-
 This repository is an example of project that makes use of said technologies. This setup is strongly suited towards large and scalable SPAs (single page apps), rather than simple apps and presentational websites. This example will not explain how to use each of these tools in depth but instead provide a simple example of how you can use them together to make an app with the use of them. Feel free to clone this repository and use it as a boilerplate for anything you wish to use.
 
 
@@ -8,6 +7,8 @@ This repository is an example of project that makes use of said technologies. Th
 
 ### [Webpack](https://webpack.github.io/)
 The main build tool we'll be using to transform and handle our assets such as our TypeScript, Sass, and HTML. It will allow us to use [ES6 module syntax](https://strongloop.com/strongblog/an-introduction-to-javascript-es6-modules/) using `import` and `export`. Please keep in mind the [WHATWG Module Loader Specification](https://whatwg.github.io/loader/) is incomplete and subject to change. The configuration used in this project is fairly complex but shouldn't need to be altered much outside of the [file manifest](https://github.com/mpalmr/webpack-mithril-typescript-example/blob/master/buildConfig/manifest.json).
+
+Although this is the only build tool used in this example, the usage of a task runner such as [Gulp](http://gulpjs.com/), [Grunt](http://gruntjs.com/), or [Make](https://www.gnu.org/software/make/manual/make.html), isn't neccessarily a bad idea. Task runners are great for **any** automated task while Webpack is explicitly for transforming and handling front end web assets.
 
 
 ### [Mithril](mithril.js.org)
@@ -20,18 +21,29 @@ Instead of only being a view library like React is, Mithril implements the MVC d
 A superset of JavaScript with static typing. Catches mismatched types at compile time to help reduce uncaught bugs and encourage good coding habits.
 
 
-### [Sass](http://sass-lang.com/)
-
-***This configuration won't support the old Sass syntax!***
-
-SCSS is a superset of CSS, much like how TypeScript is a superset of JavaScript. It's very popular among front end web devs and is the most popular CSS pre-processor out there. It should be fairly easy to edit the configuration to swap Sass out for any other popular pre-processor.
-
-Through the use of Webpack we are able to modularize our styles into modules we `import` via TypeScript which are then automatically bundled into a CSS file. This means if we don't use a particular application module, the CSS associated with it won't be compiled into te project.
+### Other
+  * [Sass](http://sass-lang.com/)
+  * [PostCSS](http://postcss.org/)
+  * Unit testing: ([Karma](https://karma-runner.github.io/1.0/index.html), [Mocha](https://mochajs.org/), [Chai](http://chaijs.com/))
 
 
-### [PostCSS](http://postcss.org/)
-Transforms CSS through the use of configurable modules. Currently this example only uses PostCSS to automatically add or remove vendor prefixes using [autoprefixer](https://github.com/postcss/autoprefixer).
+
+## Installing
+
+### Prerequisites
+  * [Git](https://git-scm.com/downloads)
+  * [NodeJS](https://nodejs.org/en/download/)
 
 
-### Unit Testing
-Basic unit testing is possible within this repository through the usage of Karma, Mocha, and Chai.
+#### Global npm Packages
+Please ensure the following packages are installed globally before trying to use this as boilerplate:
+
+`npm install -g node-gyp tslint typescript`
+
+
+### Clone
+`git clone git@github.com:mpalmr/webpack-mithril-typescript-example.git`
+
+
+
+## Usage
