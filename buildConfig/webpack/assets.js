@@ -73,4 +73,9 @@ function copyStatic() {
   };
 }
 
-module.exports = { typeScript, style, generateHtml, copyStatic };
+module.exports = {
+  typeScript,
+  style,
+  generateHtml,
+  copyStatic,
+};

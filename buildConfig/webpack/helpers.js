@@ -73,4 +73,9 @@ function clean(root = settings.PATHS.dist) {
   }
 }
 
-module.exports = { devServer, optimizeForProd, extractBundle, clean };
+module.exports = {
+  devServer,
+  optimizeForProd,
+  extractBundle,
+  clean,
+};

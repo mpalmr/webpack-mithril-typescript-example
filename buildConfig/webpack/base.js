@@ -6,7 +6,7 @@ const helpers = require('./helpers');
 const assets = require('./assets');
 
 // Base configuration all builds are merged into
-const base = merge({
+module.exports = merge({
   entry: {
     main: path.join(settings.PATHS.src, 'index.ts'),
   },
@@ -30,5 +30,3 @@ const base = merge({
   helpers.extractBundle(`vendor${settings.FILE_SCHEMES.hashOnly}.js`, settings.DEPENDENCIES),
   assets.typeScript(),
   assets.style());
-
-module.exports = { base };
