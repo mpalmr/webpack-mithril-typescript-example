@@ -9,6 +9,7 @@ const paths = {
   reports: path.join(process.cwd(), 'reports'),
 };
 paths.htmlTemplate = path.join(paths.assets, 'template.html');
+paths.assetsProductionPath = path.join(paths.dist, 'assets');
 
 // Declares naming schemes to be used by webpack
 const fileSchemes = {

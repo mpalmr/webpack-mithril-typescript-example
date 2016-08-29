@@ -5,6 +5,7 @@ const settings = require('./settings');
 const helpers = require('./helpers');
 const assets = require('./assets');
 
+// Base configuration all builds are merged into
 const base = merge({
   entry: {
     main: path.join(settings.paths.src, 'index.ts'),

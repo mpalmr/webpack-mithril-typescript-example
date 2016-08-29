@@ -6,6 +6,10 @@ const autoprefixer = require('autoprefixer');
 const settings = require('./settings');
 const PKG = require('../package.json');
 
+/**
+ * Compiles TypeScript into JavaScript which is then transpiled into ES5 via Babel
+ * @return {Object} Webpack configuration addition to be merged
+ */
 function typeScript() {
   const BABEL_CONFIG = JSON.stringify(Object.assign(PKG.babel, {
     sourceMap: true,
@@ -24,6 +28,10 @@ function typeScript() {
   };
 }
 
+/**
+ * Compiles SCSS and CSS through the Sass loader, then through PostCSS for autoprefixing
+ * @return {Object} Webpack configuration addition to be merged
+ */
 function style() {
   const cssFile = new ExtractText(`${settings.fileSchemes.keepName}.css`);
   return {
@@ -41,6 +49,10 @@ function style() {
   };
 }
 
+/**
+ * Generates HTML file from a template to have assets injected into
+ * @return {Object} Webpack configuration addition to be merged
+ */
 function generateHtml() {
   return {
     plugins: [
@@ -52,13 +64,14 @@ function generateHtml() {
   };
 }
 
+/**
+ * Copy static assets into production and development builds
+ * @return {Object} Webpack configuration addition to be merged
+ */
 function copyStatic() {
   return {
     plugins: [
-      new Copy([{
-        from: settings.paths.assets,
-        to: path.join(settings.paths.dist, 'assets'),
-      }], {
+      new Copy([{ from: settings.paths.assets, to: settings.paths.assetsProductionPath }], {
         ignore: [settings.paths.htmlTemplate],
       }),
     ],

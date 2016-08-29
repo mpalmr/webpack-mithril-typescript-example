@@ -12,7 +12,6 @@ module.exports = validate(merge(config.base, (() => {
     case 'development': return merge(
       GENERATE_SOURCE_MAPS,
       config.generateHtml(),
-      config.loadStatic(),
       config.devServer());
 
     case 'production': return merge(
