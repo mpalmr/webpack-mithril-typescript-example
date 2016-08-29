@@ -11,7 +11,7 @@ const base = merge({
   },
   output: {
     path: settings.paths.dist,
-    filename: `${settings.files.keepName}.js`,
+    filename: `${settings.fileSchemes.keepName}.js`,
     chunkFilename: '[chunkhash].js',
   },
   resolve: {
@@ -26,8 +26,7 @@ const base = merge({
     }),
   ],
 },
-  helpers.extractBundle(`vendor${settings.files.hashOnly}.js`, settings.dependencies),
-  helpers.clean(settings.paths.dist),
+  helpers.extractBundle(`vendor${settings.fileSchemes.hashOnly}.js`, settings.dependencies),
   assets.typeScript(),
   assets.style());
 

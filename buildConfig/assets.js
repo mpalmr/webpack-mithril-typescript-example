@@ -25,7 +25,7 @@ function typeScript() {
 }
 
 function style() {
-  const cssFile = new ExtractText(`${settings.files.keepName}.css`);
+  const cssFile = new ExtractText(`${settings.fileSchemes.keepName}.css`);
   return {
     plugins: [cssFile],
     module: {

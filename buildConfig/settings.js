@@ -10,7 +10,7 @@ const paths = {
 };
 paths.htmlTemplate = path.join(paths.assets, 'template.html');
 
-const files = {
+const fileSchemes = {
   keepName: process.env.NODE_ENV === 'production' ? '[name].[chunkhash]' : '[name]',
   hashOnly: process.env.NODE_ENV === 'production' ? '.[chunkhash]' : '',
 };
@@ -18,4 +18,4 @@ const files = {
 const dependencies = Object.keys(PKG.dependencies)
   .filter(k => !['normalize.css'].includes(k));
 
-module.exports = { paths, files, dependencies };
+module.exports = { paths, fileSchemes, dependencies };
