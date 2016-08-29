@@ -6,8 +6,6 @@ const autoprefixer = require('autoprefixer');
 const declarations = require('./declarations');
 const PKG = require('../package.json');
 
-const TEMPLATE_PATH = path.join(declarations.paths.assets, 'template.html');
-
 function typeScript() {
   const BABEL_CONFIG = JSON.stringify(Object.assign(PKG.babel, {
     sourceMap: true,
@@ -48,7 +46,7 @@ function generateHtml() {
     plugins: [
       new Html({
         title: 'Example project',
-        template: TEMPLATE_PATH,
+        template: declarations.paths.htmlTemplate,
       }),
     ],
   };
@@ -61,7 +59,7 @@ function copyStatic() {
         from: declarations.paths.assets,
         to: path.join(declarations.paths.dist, 'assets'),
       }], {
-        ignore: [TEMPLATE_PATH],
+        ignore: [declarations.paths.htmlTemplate],
       }),
     ],
   };

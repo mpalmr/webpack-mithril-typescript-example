@@ -25,7 +25,8 @@ const base = merge({
       },
     }),
   ],
-}, helpers.extractBundle(`vendor${declarations.files.hashOnly}.js`, declarations.dependencies),
+},
+  helpers.extractBundle(`vendor${declarations.files.hashOnly}.js`, declarations.dependencies),
   helpers.clean(declarations.paths.dist),
   assets.typeScript(),
   assets.style());
