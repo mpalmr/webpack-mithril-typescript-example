@@ -1,6 +1,6 @@
 const base = require('./base');
-const declarations = require('./declarations');
+const settings = require('./settings');
 const assets = require('./assets');
 const helpers = require('./helpers');
 
-module.exports = Object.assign(base, declarations, assets, helpers);
+module.exports = Object.assign(base, settings, assets, helpers);

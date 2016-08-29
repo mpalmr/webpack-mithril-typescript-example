@@ -3,7 +3,7 @@ const ExtractText = require('extract-text-webpack-plugin');
 const Html = require('html-webpack-plugin');
 const Copy = require('copy-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-const declarations = require('./declarations');
+const settings = require('./settings');
 const PKG = require('../package.json');
 
 function typeScript() {
@@ -17,7 +17,7 @@ function typeScript() {
         {
           test: /\.ts$/,
           loader: `babel-loader?${BABEL_CONFIG}!ts-loader`,
-          include: declarations.paths.src,
+          include: settings.paths.src,
         },
       ],
     },
@@ -25,7 +25,7 @@ function typeScript() {
 }
 
 function style() {
-  const cssFile = new ExtractText(`${declarations.files.keepName}.css`);
+  const cssFile = new ExtractText(`${settings.files.keepName}.css`);
   return {
     plugins: [cssFile],
     module: {
@@ -33,7 +33,7 @@ function style() {
         {
           test: /\.s?css$/,
           loader: cssFile.extract('style', 'css?sourceMap!resolve-url!postcss!sass?sourceMap'),
-          include: declarations.paths.src,
+          include: settings.paths.src,
         },
       ],
     },
@@ -46,7 +46,7 @@ function generateHtml() {
     plugins: [
       new Html({
         title: 'Example project',
-        template: declarations.paths.htmlTemplate,
+        template: settings.paths.htmlTemplate,
       }),
     ],
   };
@@ -56,33 +56,13 @@ function copyStatic() {
   return {
     plugins: [
       new Copy([{
-        from: declarations.paths.assets,
-        to: path.join(declarations.paths.dist, 'assets'),
+        from: settings.paths.assets,
+        to: path.join(settings.paths.dist, 'assets'),
       }], {
-        ignore: [declarations.paths.htmlTemplate],
+        ignore: [settings.paths.htmlTemplate],
       }),
     ],
   };
 }
 
-function loadStatic() {
-  return {
-    module: {
-      loaders: [
-        {
-          test: /\.jpg$/,
-          loader: 'file?name=[path][name].[ext]',
-          include: declarations.paths.assets,
-        },
-      ],
-    },
-  };
-}
-
-module.exports = {
-  typeScript,
-  style,
-  generateHtml,
-  copyStatic,
-  loadStatic,
-};
+module.exports = { typeScript, style, generateHtml, copyStatic };

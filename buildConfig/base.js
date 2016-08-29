@@ -1,21 +1,21 @@
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const declarations = require('./declarations');
+const settings = require('./settings');
 const helpers = require('./helpers');
 const assets = require('./assets');
 
 const base = merge({
   entry: {
-    main: path.join(declarations.paths.src, 'index.ts'),
+    main: path.join(settings.paths.src, 'index.ts'),
   },
   output: {
-    path: declarations.paths.dist,
-    filename: `${declarations.files.keepName}.js`,
+    path: settings.paths.dist,
+    filename: `${settings.files.keepName}.js`,
     chunkFilename: '[chunkhash].js',
   },
   resolve: {
-    root: declarations.paths.src,
+    root: settings.paths.src,
     extensions: ['', '.js', '.ts'],
   },
   plugins: [
@@ -26,8 +26,8 @@ const base = merge({
     }),
   ],
 },
-  helpers.extractBundle(`vendor${declarations.files.hashOnly}.js`, declarations.dependencies),
-  helpers.clean(declarations.paths.dist),
+  helpers.extractBundle(`vendor${settings.files.hashOnly}.js`, settings.dependencies),
+  helpers.clean(settings.paths.dist),
   assets.typeScript(),
   assets.style());
 
