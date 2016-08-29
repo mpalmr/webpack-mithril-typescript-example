@@ -1,3 +1,7 @@
+/**
+ * Contains constants to be used through the build's config.
+ */
+
 const path = require('path');
 const PKG = require('../package.json');
 

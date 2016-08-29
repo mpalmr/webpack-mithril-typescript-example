@@ -1,3 +1,7 @@
+/**
+ * Contains functions to mutate configuration to transform and copy different asset types.
+ */
+
 const path = require('path');
 const ExtractText = require('extract-text-webpack-plugin');
 const Html = require('html-webpack-plugin');
