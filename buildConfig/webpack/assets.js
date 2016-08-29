@@ -4,23 +4,19 @@ const Html = require('html-webpack-plugin');
 const Copy = require('copy-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const settings = require('./settings');
-const PKG = require('../package.json');
+const PKG = require('../../package.json');
 
 /**
  * Compiles TypeScript into JavaScript which is then transpiled into ES5 via Babel
  * @return {Object} Webpack configuration addition to be merged
  */
 function typeScript() {
-  const BABEL_CONFIG = JSON.stringify(Object.assign(PKG.babel, {
-    sourceMap: true,
-    cacheDirectory: true,
-  }));
   return {
     module: {
       loaders: [
         {
           test: /\.ts$/,
-          loader: `babel-loader?${BABEL_CONFIG}!ts-loader`,
+          loader: `babel-loader?${settings.BABEL_CONFIG}!ts-loader`,
           include: settings.paths.src,
         },
       ],
@@ -30,17 +26,17 @@ function typeScript() {
 
 /**
  * Compiles SCSS and CSS through the Sass loader, then through PostCSS for autoprefixing
+ * @param {ExtractText} [bundle={...}] - CSS bundle to product, by default resolves to keepName
  * @return {Object} Webpack configuration addition to be merged
  */
-function style() {
-  const cssFile = new ExtractText(`${settings.fileSchemes.keepName}.css`);
+function style(bundle = new ExtractText(`${settings.fileSchemes.keepName}.css`)) {
   return {
-    plugins: [cssFile],
+    plugins: [bundle],
     module: {
       loaders: [
         {
           test: /\.s?css$/,
-          loader: cssFile.extract('style', 'css?sourceMap!resolve-url!postcss!sass?sourceMap'),
+          loader: bundle.extract('style', 'css?sourceMap!resolve-url!postcss!sass?sourceMap'),
           include: settings.paths.src,
         },
       ],

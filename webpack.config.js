@@ -3,7 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const validate = require('webpack-validator');
-const config = require('./buildConfig');
+const config = require('./buildConfig/webpack');
 
 module.exports = validate(merge(config.base, (() => {
   const GENERATE_SOURCE_MAPS = { devtool: 'eval-source-map' };

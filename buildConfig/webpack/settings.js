@@ -1,5 +1,5 @@
 const path = require('path');
-const PKG = require('../package.json');
+const PKG = require('../../package.json');
 
 // Project paths
 const paths = {
@@ -22,4 +22,10 @@ const fileSchemes = {
 const dependencies = Object.keys(PKG.dependencies)
   .filter(k => !['normalize.css'].includes(k));
 
-module.exports = { paths, fileSchemes, dependencies };
+// Package constants
+const BABEL_CONFIG = JSON.stringify(Object.assign(PKG.babel, {
+  sourceMap: true,
+  cacheDirectory: true,
+}));
+
+module.exports = { paths, fileSchemes, dependencies, BABEL_CONFIG };
