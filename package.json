@@ -21,7 +21,8 @@
     "start": "NODE_ENV=development webpack-dev-server",
     "test": "NODE_ENV=test webpack && karma start",
     "build": "NODE_ENV=production webpack",
-    "stats": "NODE_ENV=production webpack --profile --json > reports/stats.json"
+    "stats": "NODE_ENV=production webpack --profile --json > ./reports/stats.json",
+    "lint": "tslint --project . -o ./reports/tslint.txt"
   },
   "dependencies": {
     "mithril": "^0.2.5",
