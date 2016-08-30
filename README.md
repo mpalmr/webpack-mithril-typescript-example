@@ -8,26 +8,11 @@ This repository is an example of project that makes use of said technologies. Th
 
 ## Stack Overview
 
-### [Webpack](https://webpack.github.io/)
-The main build tool we'll be using to transform and handle our assets such as our TypeScript, Sass, and HTML. It will allow us to use [ES6 module syntax](https://strongloop.com/strongblog/an-introduction-to-javascript-es6-modules/) using `import` and `export`. Please keep in mind the [WHATWG Module Loader Specification](https://whatwg.github.io/loader/) is incomplete and subject to change. The configuration used in this project is fairly complex but shouldn't need to be altered much outside of the [file manifest](https://github.com/mpalmr/webpack-mithril-typescript-example/blob/master/buildConfig/manifest.json).
-
-Although this is the only build tool used in this example, the usage of a task runner such as [Gulp](http://gulpjs.com/), [Grunt](http://gruntjs.com/), or [Make](https://www.gnu.org/software/make/manual/make.html), isn't neccessarily a bad idea. Task runners are great for **any** automated task while Webpack is explicitly for transforming and handling front end web assets.
-
-
-### [Mithril](mithril.js.org)
-Mithril may not be very popular but it's very lightweight, minimal, and performant which already makes it a good candidate for a large scale app. Additionally it implements very similar templating to [React](https://facebook.github.io/react/)'s which is very popular for front end web application development right now, all while providing a bare bones.
-
-Instead of only being a view library like React is, Mithril implements the MVC design pattern. Its implementation of MVC is so loose that it's quite easy to coax it into more of an MVVM, or whatever architecture pattern you prefer. It only requires a view at the core and doesn't really do much to implement models.
-
-
-### [TypeScript](https://www.typescriptlang.org/)
-A superset of JavaScript with static typing. Catches mismatched types at compile time to help reduce uncaught bugs and encourage good coding habits.
-
-
-### Other
-* [Sass](http://sass-lang.com/)
-* [PostCSS](http://postcss.org/)
-* Unit testing: ([Karma](https://karma-runner.github.io/1.0/index.html), [Mocha](https://mochajs.org/), [Chai](http://chaijs.com/))
+* [Webpack](https://webpack.github.io/): Allows each asset in a project to be used as a JavaScript module. This includes not only JavaScript and TypeScript files, but also SCSS are supported with the provided configuration.
+* [Mithril](mithril.js.org): A minimal JavaScript MVC library that provides React-like templating.
+* [TypeScript](https://www.typescriptlang.org/): A superset of JavaScript. It brings features that compliment large code bases such as [static typing](https://www.typescriptlang.org/docs/handbook/basic-types.html) and [interfaces](https://www.typescriptlang.org/docs/handbook/interfaces.html).
+* [Sass (SCSS)](http://sass-lang.com/): A popular superset of CSS that makes it easier to write modular styles and brings features such as [variables](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#variables_) and [mixins](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#mixins). Additionally this project uses [PostCSS](http://postcss.org/) with [autoprefixer](https://github.com/postcss/autoprefixer).
+* Units are in: [Karma](https://karma-runner.github.io/1.0/index.html), [Mocha](https://mochajs.org/), and [Chai](http://chaijs.com/).
 
 
 
