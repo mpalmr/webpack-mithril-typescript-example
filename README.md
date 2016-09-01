@@ -1,4 +1,4 @@
-***WARNING: THIS PROJECT AND DOCS ARE INCOMPLETE***
+#### ***WARNING: THIS PROJECT AND DOCS ARE INCOMPLETE***
 
 # Example: Webpack Mithril Typescript
 
@@ -40,12 +40,20 @@ After navigating to the directory you wish to clone this repository into, run th
 ## NPM Scripts
 All project tasks are evoked via [npm scripts](https://docs.npmjs.com/misc/scripts). `webpack` and `webpack-dev-server` should never be evoked directly from the command line.
 
-* `npm start` **(Development Server)**: Starts an instance of `webpack-dev-server` with [HMR](https://webpack.github.io/docs/hot-module-replacement.html). Any changes to CSS assets will be automatically reflected in the browser, while changes to JavaScript assets will reload the page. All JavaScript and CSS are found in single file bundles.
+* `npm start` **(Development Server)**: Starts an instance of `webpack-dev-server` with [HMR](https://webpack.github.io/docs/hot-module-replacement.html). Any changes to CSS assets will be automatically reflected in the browser, while changes to JavaScript assets will reload the page.
 
-* `npm run build` **(Production Build)**: Builds the project to `/dist/`. Optimized for a faster more responsive feeling user experiance. This is done by splitting up JavaScript and CSS assets into multiple chunks complimented by using hashes in asset file names to make better use of the browser's cache. Additionally all JavaScript is ran through Webpack's [UglifyJS](https://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin) plugin.
+* `npm run build` **(Production Build)**: Builds the project to `/dist/`. Optimized for a faster more responsive feeling user experiance. This is done using hashes in asset file names to make better use of the browser's cache. Additionally all JavaScript is ran through Webpack's [UglifyJS](https://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin) plugin.
 
 * `npm test` **(Run Unit Tests)**: Spins up an instance of Chrome and Firefox through Karma to run unit tests. Unit tests are written using the Mocha test runner and Chai assertion library.
 
 * `npm run lint` **(Generate Linting Reports)**: Generates a [tslint](https://www.npmjs.com/package/tslint) report in the `/reports/tslint/` directory. If no report is generated the project is fully compliant with the linting configuration.
 
 * `npm run stats` **(Generate Webpack Statistics Report)**: Generates statistics that can be useful for optimizing your project's performance and Webpack's build time.
+
+
+
+## Bundle Manifest
+
+The manifest is a JSON file used to define which chunks are to be split into which files using Webpack's [code splitting](https://webpack.github.io/docs/code-splitting.html) functionality. The file consists of two arrays:
+
+* **`definedBundles`**: 
